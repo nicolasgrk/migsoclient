@@ -9,7 +9,6 @@ function QuestionsPage() {
 
   useEffect(() => {
     // Assurez-vous que cette URL pointe vers votre API qui renvoie les questions avec leurs choix
-    //fetch('http://localhost:8888/migso/api/src/controllers/Question/Question_read.php')
     fetch('/Question/Question_readWithChoice.php')
     .then(response => response.json())
     .then(data => setQuestions(data.data))
