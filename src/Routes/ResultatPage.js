@@ -9,13 +9,7 @@ function ResultsPage() {
     const navigate = useNavigate();
     const [rankings, setRankings] = useState([]);
     const [compatibilityMatrix, setCompatibilityMatrix] = useState([]);
-    const usersTest = [
-        { id: 1, name: "Alexandre", points: 980 },
-        { id: 2, name: "Béatrice", points: 875 },
-        { id: 3, name: "Charles", points: 920 },
-        { id: 4, name: "Diane", points: 810 },
-      ];
-      const sortedUsers = usersTest.sort((a, b) => b.points - a.points);
+
 
     useEffect(() => {
         // S'assurer que currentUser existe et a une propriété 'id' avant de continuer

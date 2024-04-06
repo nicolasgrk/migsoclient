@@ -8,7 +8,7 @@ import { LogOut, User, Settings, Home,SquarePen } from 'lucide-react';
 const Menu = ({ onProfileClick }) => {
     console.log(onProfileClick); // Doit afficher la fonction dans la console
     let navigate = useNavigate();
-    const { currentUser, clearUser } = useAuth(); // Utiliser useAuth pour accéder à l'utilisateur actuel et à la fonction clearUser
+    const {clearUser } = useAuth(); // Utiliser useAuth pour accéder à l'utilisateur actuel et à la fonction clearUser
 
     const handleLogout = async () => {
         const response = await fetch('/User/User_logout.php', {
@@ -36,7 +36,7 @@ const Menu = ({ onProfileClick }) => {
                         <button onClick={onProfileClick} className="hover:text-blue-700">
                             <User color="black" size="24" />
                         </button>
-                        <a className="hover:text-blue-700" target="_blank" href="https://www.producthunt.com/@salnetx">
+                        <a className="hover:text-blue-700"  href="#">
                             <Settings color="black" size="28" />
                         </a>
                         <Link to="/questions" className="hover:text-blue-700"> 

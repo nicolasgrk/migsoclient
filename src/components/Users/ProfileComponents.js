@@ -21,19 +21,20 @@ function Profile({ setIsProfileOpen }){
                     return response.json();
                 })
                 .then(data => {
-                    console.log(data); // Ajoutez cette ligne pour vérifier la réponse
-
-                    setUserInfo({
+                    console.log(data); // Pour le débogage
+    
+                    setUserInfo(userInfo => ({
                         ...userInfo,
-                        Username: data.Username, // Assurez-vous que ces clés correspondent à celles retournées par votre API
+                        Username: data.Username, // Assurez-vous que ces clés correspondent
                         Email: data.Email,
                         FirstName: data.FirstName,
                         LastName: data.LastName
-                    });
+                    }));
                 })
                 .catch(error => console.error("Il y a eu un problème avec l'opération fetch: ", error));
         }
-    }, [currentUser]);
+    }, [currentUser]); // `userInfo` est omis ici, car nous utilisons une mise à jour fonctionnelle
+    
 
     return (
         <div>

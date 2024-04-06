@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Ajout
 import { Link } from 'react-router-dom';
 
 function HomePage() {
-  const navigate = useNavigate(); // Initialisation de useNavigate
 
   return (
       <div className="relative isolate px-6 pt-14 lg:px-8">

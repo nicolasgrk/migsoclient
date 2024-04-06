@@ -5,7 +5,7 @@ import { useAuth } from '../../AuthContext'; // Assurez-vous que le chemin est c
 const QuestionForm = ({ questions }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({}); // Stocke les réponses sélectionnées
-  const { currentUser, clearUser } = useAuth(); // Utiliser useAuth pour accéder à l'utilisateur actuel et à la fonction clearUser
+  const { currentUser } = useAuth(); // Utiliser useAuth pour accéder à l'utilisateur actuel et à la fonction clearUser
   const navigate = useNavigate(); // Initialisation de useNavigate
 
   // Mise à jour pour enregistrer la sélection de l'utilisateur
@@ -98,13 +98,22 @@ const QuestionForm = ({ questions }) => {
               Envoyer le questionnaire
             </button>
           ) : (
-            <button
-              type="button"
-              onClick={handleNext}
-              className="px-6 py-2 border rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none"
-            >
-              Suivant
-            </button>
+            <div>
+              <button
+                type="button"
+                onClick={handlePrev}
+                className="px-6 py-2 border rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none"
+              >
+                Précédent
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                className="px-6 py-2 border rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none"
+              >
+                Suivant
+              </button>
+            </div>
           )}
         </div>
       </form>

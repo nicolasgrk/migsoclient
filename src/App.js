@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import LoginPage from './Routes/LoginPage';
 import QuestionsPage from './Routes/QuestionsPage';
@@ -10,11 +10,9 @@ import Menu from './components/menu';
 import Profile from './components/Users/ProfileComponents';
 import Logo from './components/logo';
 
-import { useAuth } from './AuthContext'; // Assurez-vous que ce chemin est correct
 
 function App() {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const { currentUser } = useAuth();
 
   function AppContent() {
     const location = useLocation();
