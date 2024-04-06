@@ -36,7 +36,7 @@ const Menu = ({ onProfileClick }) => {
                         <button onClick={onProfileClick} className="hover:text-blue-700">
                             <User color="black" size="24" />
                         </button>
-                        <a className="hover:text-blue-700"  href="#">
+                        <a className="hover:text-blue-700"  href="/test">
                             <Settings color="black" size="28" />
                         </a>
                         <Link to="/questions" className="hover:text-blue-700"> 
@@ -47,7 +47,7 @@ const Menu = ({ onProfileClick }) => {
                             e.preventDefault();
                             handleLogout(); 
                         }} 
-                        href="#">
+                        href="/test">
                             <LogOut color="black" size="24" />
                         </a>
                     </div>
