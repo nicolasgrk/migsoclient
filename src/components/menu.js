@@ -26,7 +26,7 @@ const Menu = ({ onProfileClick }) => {
     };
 
     return (
-        <div className="flex flex-col rounded-3xl">
+        <div className="flex flex-col rounded-3xl z-50">
             <div className="backdrop-blur-3xl text-sm border bg-black/5 rounded-2xl text-neutral-500 p-6 fixed bottom-8 left-1/2 transform -translate-x-1/2">
                 <div className="flex justify-center items-center h-full w-full">
                     <div className="flex items-center justify-center space-x-4"> 
