@@ -44,7 +44,7 @@ function LoginPage() {
       };
       setUser(user); // Mettez à jour l'état global de l'utilisateur
       
-      navigate('/questions');
+      navigate('/home');
     }else {
       // Gérez l'erreur de connexion
       alert("Échec de la connexion");
@@ -56,7 +56,8 @@ function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100">
+    <div className="mt-48 flex flex-col justify-center items-center">
+
       <form onSubmit={handleLogin} className="w-full max-w-xs">
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
@@ -96,8 +97,7 @@ function LoginPage() {
           <button
             type="button"
             onClick={redirectToSignup}
-            className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-          >
+            className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
             S'inscrire
           </button>
         </div>

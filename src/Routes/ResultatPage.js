@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { Award } from 'lucide-react';
 
-import Menu from '../components/menu';
 
 function ResultsPage() {
     const { currentUser } = useAuth();
     const navigate = useNavigate();
     const [rankings, setRankings] = useState([]);
     const [compatibilityMatrix, setCompatibilityMatrix] = useState([]);
+    const usersTest = [
+        { id: 1, name: "Alexandre", points: 980 },
+        { id: 2, name: "Béatrice", points: 875 },
+        { id: 3, name: "Charles", points: 920 },
+        { id: 4, name: "Diane", points: 810 },
+      ];
+      const sortedUsers = usersTest.sort((a, b) => b.points - a.points);
 
     useEffect(() => {
         // S'assurer que currentUser existe et a une propriété 'id' avant de continuer
@@ -37,45 +44,55 @@ function ResultsPage() {
 
 
     return (
+        
         <div>
-            <Menu />
-            <h2 className="text-2xl font-bold mt-5 mb-3">Résultats de Compatibilité</h2>
-            <h3 className="text-xl font-semibold mt-5 mb-2">Classement</h3>
-            <ul className="list-decimal list-inside mb-5">
-                {rankings.map((rank, index) => (
-                    <li key={index} className="ml-4">
-                        {rank.OtherUserFirstName} {rank.OtherUserLastName} : {rank.CompatibilityPercent}% compatible
-                    </li>
-                ))}
-            </ul>
-
-            <h3 className="text-xl font-semibold mt-5 mb-2">Matrice de Compatibilité</h3>
-            <div className="overflow-x-auto">
-                <table className="min-w-full bg-white">
-                    <thead className="bg-gray-800 text-white">
-                        <tr>
-                            <th className="text-left py-3 px-4 uppercase font-semibold text-sm">Joueurs</th>
-                            {compatibilityMatrix.map((row, index) => (
-                                <th key={index} className="text-left py-3 px-4 uppercase font-semibold text-sm">
-                                    {row.FirstName} {row.LastName}
-                                </th>
+                <div className="max-w-md mx-auto bg-white mt-8 rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+                    <h3 className="text-xl font-semibold mt-5 mb-2 text-center">Classement</h3>
+                    <div className="p-4">
+                        <div className="flex flex-col space-y-4">
+                        {rankings.map((rank, index) => (
+                                <div key={index} className="flex items-center justify-between">
+                                    <div className="flex items-center">
+                                        <div className="text-lg font-semibold">{index + 1}.</div>
+                                            <Award className="ml-2 text-yellow-500" size={24} />
+                                        <div className="ml-4 text-md font-medium">{rank.OtherUserFirstName} {rank.OtherUserLastName}</div>
+                                    </div>
+                                    <div className="font-medium">{rank.CompatibilityPercent} % compatible</div>
+                                </div>
                             ))}
-                        </tr>
-                    </thead>
-                    <tbody className="text-gray-700">
-                        {compatibilityMatrix.map((row, rowIndex) => (
-                            <tr key={rowIndex}>
-                                <td className="text-left py-3 px-4">{row.FirstName} {row.LastName}</td>
-                                {Object.keys(row.compatibility).map((key, index) => (
-                                    <td key={index} className="text-left py-3 px-4">
-                                        {row.compatibility[key] !== null ? `${row.compatibility[key]}%` : 'N/A'}
-                                    </td>
+                        </div>
+                    </div>
+                </div>
+                <div className="max-w-6xl mx-auto bg-white mt-8 rounded-xl shadow-md overflow-hidden mb-24">
+                    <h3 className="text-xl font-semibold mt-5 mb-2 text-center">Matrice de Compatibilité</h3>
+                    <div className="overflow-x-auto px-4">
+                        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                <th scope="col" className="py-3 px-6">Joueurs</th>
+                                    {compatibilityMatrix.map((row, index) => (
+                                        <th key={index} className="text-left py-3 px-4 uppercase font-semibold text-sm">
+                                            {row.FirstName} {row.LastName}
+                                        </th>
+                                    ))}
+                                </tr>
+                            </thead>
+                            <tbody className="text-gray-700">
+                                {compatibilityMatrix.map((row, rowIndex) => (
+                                    <tr key={rowIndex} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td className="py-4 px-6">{row.FirstName} {row.LastName}</td>
+                                        {Object.keys(row.compatibility).map((key, index) => (
+                                            <td key={index} className="text-left py-3 px-4">
+                                                {row.compatibility[key] !== null ? `${row.compatibility[key]}%` : 'N/A'}
+                                            </td>
+                                        ))}
+                                    </tr>
                                 ))}
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
         </div>
     );
 }

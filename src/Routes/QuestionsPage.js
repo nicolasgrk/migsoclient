@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Ajout
 import QuestionForm from '../components/Question/QuestionForm';
-import Menu from '../components/menu';
 
 function QuestionsPage() {
   const [questions, setQuestions] = useState([]);
@@ -28,7 +27,6 @@ const handleSubmit = (e) => {
   };
 return (
   <div>
-    <Menu />
     <QuestionForm questions={questions} handleSubmit={handleSubmit} />
     <div className="flex justify-center mt-4">
       <button
@@ -38,7 +36,9 @@ return (
       Voir les Résultats
       </button>
     </div>
+
   </div>
+
 );
 }
 

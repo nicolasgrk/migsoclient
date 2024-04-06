@@ -58,7 +58,7 @@ const QuestionForm = ({ questions }) => {
   const isLastQuestion = currentQuestionIndex === questions.length - 1;
 
   return (
-    <div className="App">
+    <div className="App mt-24">
       <form onSubmit={handleSubmit} className="space-y-6">
         {questions.map((question, index) => (
           <div

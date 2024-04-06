@@ -48,11 +48,12 @@ function SignupPage() {
     });
   };
 
-
+  const redirectToLogin = () => {
+    navigate('/login'); // Assurez-vous que le chemin correspond à celui défini pour SignUpPage dans vos routes
+  };
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md">
-        <form onSubmit={handleSignup} className="bg-white shadow-lg rounded px-12 pt-6 pb-8 mb-4">
+    <div className="mt-24 flex flex-col justify-center items-center">
+        <form onSubmit={handleSignup} className="w-full max-w-xs">
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">
               Prénom
@@ -115,9 +116,14 @@ function SignupPage() {
               type="submit">
               Créer un compte
             </button>
+            <button
+            type="button"
+            onClick={redirectToLogin}
+            className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+            Se connecter
+          </button>
           </div>
         </form>
-      </div>
     </div>
   );
 }
